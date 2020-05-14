@@ -5,6 +5,15 @@ using System.Runtime.InteropServices;
 
 namespace OpenXmlForVsto.Excel {
     public class OpenXmlHelper {
+        /// <summary>
+        /// Copy a range to a separate .xlsx file,
+        /// to a sheet with same name as source sheet,
+        /// to the same position as source range.
+        /// It works exactly same as manual copy from one excel file to a new file
+        /// then saving and closing new file.
+        /// </summary>
+        /// <param name="range">Single-area range that will be copied.</param>
+        /// <returns>Full path to a new temporary .xlsx file with copied range.</returns>
         public string CopyToFile(Range range) {
             if (range == null) throw new ArgumentNullException(nameof(range));
 
@@ -15,6 +24,16 @@ namespace OpenXmlForVsto.Excel {
             return SaveAndClose(target.Item1);
         }
 
+        /// <summary>
+        /// Copy a range to a separate .xlsx file,
+        /// to a sheet with same name as source sheet,
+        /// to the same position as source range.
+        /// It works exactly same as manual copy special from one excel file to a new file
+        /// then saving and closing new file.
+        /// </summary>
+        /// <param name="range">Single-area range that will be copied.</param>
+        /// <param name="pasteType">Mode of special copy. Can choose to copy all, only values, only styles etc.</param>
+        /// <returns>Full path to a new temporary .xlsx file with copied range.</returns>
         public string CopyToFileSpecial(Range range, XlPasteType pasteType) {
             if (range == null) throw new ArgumentNullException(nameof(range));
 
@@ -25,6 +44,16 @@ namespace OpenXmlForVsto.Excel {
             return SaveAndClose(target.Item1);
         }
 
+        /// <summary>
+        /// Copy a range from matching position in a provided file to the current worksheet.
+        /// It works exactly same as manual open of provided excel file,
+        /// copy same position range from it to the current worksheet
+        /// closing provided file.
+        /// </summary>
+        /// <param name="file">Full path to .xlsx file.</param>
+        /// <param name="targetRange">Single-area range in the current worksheet to copy to.</param>
+        /// <param name="sheetName">Optional name of source sheet in the provided file.
+        /// If missing, the method uses first sheet.</param>
         public void CopyFromFile(string file, Range targetRange, string sheetName = null) {
             if (file == null) throw new ArgumentNullException(nameof(file));
             if (!File.Exists(file)) throw new FileNotFoundException("File does not exist", file);
@@ -36,6 +65,17 @@ namespace OpenXmlForVsto.Excel {
             sourceWorkbook.Close();
         }
 
+        /// <summary>
+        /// Copy a range from matching position in a provided file to the current worksheet.
+        /// It works exactly same as manual open of provided excel file,
+        /// copy (special) same position range from it to the current worksheet
+        /// closing provided file.
+        /// </summary>
+        /// <param name="file">Full path to .xlsx file.</param>
+        /// <param name="targetRange">Single-area range in the current worksheet to copy to.</param>
+        /// <param name="pasteType">Mode of special copy. Can choose to copy all, only values, only styles etc.</param>
+        /// <param name="sheetName">Optional name of source sheet in the provided file.
+        /// If missing, the method uses first sheet.</param>
         public void CopyFromFileSpecial(string file, Range targetRange, XlPasteType pasteType, string sheetName = null) {
             if (file == null) throw new ArgumentNullException(nameof(file));
             if (!File.Exists(file)) throw new FileNotFoundException("File does not exist", file);
