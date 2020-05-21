@@ -1,0 +1,122 @@
+﻿using Microsoft.Office.Interop.Word;
+using System;
+using System.IO;
+using System.Runtime.InteropServices;
+
+namespace OpenXmlForVsto.Word {
+    public class OpenXmlHelper {
+        public string CopyToFile(Range sourceRange) {
+            if (sourceRange == null) throw new ArgumentNullException(nameof(sourceRange));
+
+            Document targetDocument = CreateTargetDocument(sourceRange);
+
+            try {
+                Copy(sourceRange, targetDocument);
+
+                return SaveAndClose(targetDocument);
+            }
+            finally {
+                ClearClipboard();
+            }
+        }
+
+        public string CopyToFileTextOnly(Range sourceRange) {
+            if (sourceRange == null) throw new ArgumentNullException(nameof(sourceRange));
+
+            Document targetDocument = CreateTargetDocument(sourceRange);
+
+            try {
+                CopyTextOnly(sourceRange, targetDocument);
+
+                return SaveAndClose(targetDocument);
+            }
+            finally {
+                ClearClipboard();
+            }
+        }
+
+        public void CopyFromFile(string file, Range targetRange) {
+            if (file == null) throw new ArgumentNullException(nameof(file));
+            if (!File.Exists(file)) throw new FileNotFoundException("File does not exist", file);
+            if (targetRange == null) throw new ArgumentNullException(nameof(targetRange));
+
+            Document sourceDocument = targetRange.Application.Documents.Open(file);
+
+            try {
+                Copy(sourceDocument.Range(), targetRange);
+                sourceDocument.Close();
+            }
+            finally {
+                ClearClipboard();
+            }
+        }
+
+        public void CopyFromFileTextOnly(string file, Range targetRange) {
+            if (file == null) throw new ArgumentNullException(nameof(file));
+            if (!File.Exists(file)) throw new FileNotFoundException("File does not exist", file);
+            if (targetRange == null) throw new ArgumentNullException(nameof(targetRange));
+
+            Document sourceDocument = targetRange.Application.Documents.Open(file);
+
+            try {
+                CopyTextOnly(sourceDocument.Range(), targetRange);
+                sourceDocument.Close();
+            }
+            finally {
+                ClearClipboard();
+            }
+        }
+
+        static void Copy(Range source, Document target) => Copy(source, target.Range());
+
+        static void Copy(Range source, Range target) {
+            source.Copy();
+            target.Paste();
+            if (source.Paragraphs.Count < target.Paragraphs.Count) {
+                Paragraph lastParagraph = target.Paragraphs[target.Paragraphs.Count];
+                lastParagraph.Range.Delete();
+            }
+        }
+
+        static void CopyTextOnly(Range source, Document target) => CopyTextOnly(source, target.Range());
+
+        static void CopyTextOnly(Range source, Range target) {
+            source.Copy();
+            target.PasteSpecial(DataType: WdPasteDataType.wdPasteText);
+        }
+
+        static Document CreateTargetDocument(Range sourceRange) =>
+            sourceRange.Application.Documents.Add();
+
+        static string GetOrCreateTmpDirectory() {
+            string tmpDirPath = Path.Combine(Path.GetTempPath(), "OpenXmlForVsto");
+            if (!Directory.Exists(tmpDirPath)) Directory.CreateDirectory(tmpDirPath);
+            return tmpDirPath;
+        }
+
+        static string GetNewRandomFilePath(string directory) =>
+            Path.Combine(directory, Path.GetRandomFileName()) + ".docx";
+
+        static string SaveAndClose(Document document) {
+            string tmpFilePath = GetNewRandomFilePath(GetOrCreateTmpDirectory());
+            document.SaveAs(tmpFilePath, WdSaveFormat.wdFormatXMLDocument);
+            document.Close();
+            return tmpFilePath;
+        }
+
+        static void ClearClipboard() {
+            OpenClipboard(IntPtr.Zero);
+            EmptyClipboard();
+            CloseClipboard();
+        }
+
+        [DllImport("user32.dll")]
+        static extern bool OpenClipboard(IntPtr hWndNewOwner);
+
+        [DllImport("user32.dll")]
+        static extern bool EmptyClipboard();
+
+        [DllImport("user32.dll")]
+        static extern bool CloseClipboard();
+    }
+}
