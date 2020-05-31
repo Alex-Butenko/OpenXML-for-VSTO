@@ -60,14 +60,14 @@ namespace OpenXmlForVsto.Word {
         /// copy whole content from it to another document and closing provided file,
         /// except it removes trailing empty paragraph that Word adds when coping ranges with new line at the end.
         /// </summary>
-        /// <param name="file">Full path to .docx file.</param>
+        /// <param name="sourceFile">Full path to .docx file.</param>
         /// <param name="targetRange">Single-area range to copy to.</param>
-        public void CopyFromFile(string file, Range targetRange) {
-            if (file == null) throw new ArgumentNullException(nameof(file));
-            if (!File.Exists(file)) throw new FileNotFoundException("File does not exist", file);
+        public void CopyFromFile(string sourceFile, Range targetRange) {
+            if (sourceFile == null) throw new ArgumentNullException(nameof(sourceFile));
+            if (!File.Exists(sourceFile)) throw new FileNotFoundException("File does not exist", sourceFile);
             if (targetRange == null) throw new ArgumentNullException(nameof(targetRange));
 
-            Document sourceDocument = targetRange.Application.Documents.Open(file);
+            Document sourceDocument = targetRange.Application.Documents.Open(sourceFile);
 
             try {
                 Copy(sourceDocument.Range(), targetRange);
@@ -83,14 +83,14 @@ namespace OpenXmlForVsto.Word {
         /// It works exactly same as manual open of provided Word file,
         /// copy whole text from it to another document and closing provided file,
         /// </summary>
-        /// <param name="file">Full path to .docx file.</param>
+        /// <param name="sourceFile">Full path to .docx file.</param>
         /// <param name="targetRange">Single-area range to copy to.</param>
-        public void CopyFromFileTextOnly(string file, Range targetRange) {
-            if (file == null) throw new ArgumentNullException(nameof(file));
-            if (!File.Exists(file)) throw new FileNotFoundException("File does not exist", file);
+        public void CopyFromFileTextOnly(string sourceFile, Range targetRange) {
+            if (sourceFile == null) throw new ArgumentNullException(nameof(sourceFile));
+            if (!File.Exists(sourceFile)) throw new FileNotFoundException("File does not exist", sourceFile);
             if (targetRange == null) throw new ArgumentNullException(nameof(targetRange));
 
-            Document sourceDocument = targetRange.Application.Documents.Open(file);
+            Document sourceDocument = targetRange.Application.Documents.Open(sourceFile);
 
             try {
                 CopyTextOnly(sourceDocument.Range(), targetRange);
