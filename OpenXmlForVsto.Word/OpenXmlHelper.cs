@@ -67,7 +67,7 @@ namespace OpenXmlForVsto.Word {
             if (!File.Exists(sourceFile)) throw new FileNotFoundException("File does not exist", sourceFile);
             if (targetRange == null) throw new ArgumentNullException(nameof(targetRange));
 
-            Document sourceDocument = targetRange.Application.Documents.Open(sourceFile);
+            Document sourceDocument = targetRange.Application.Documents.Open(sourceFile, Visible: false);
 
             try {
                 Copy(sourceDocument.Range(), targetRange);
@@ -90,7 +90,7 @@ namespace OpenXmlForVsto.Word {
             if (!File.Exists(sourceFile)) throw new FileNotFoundException("File does not exist", sourceFile);
             if (targetRange == null) throw new ArgumentNullException(nameof(targetRange));
 
-            Document sourceDocument = targetRange.Application.Documents.Open(sourceFile);
+            Document sourceDocument = targetRange.Application.Documents.Open(sourceFile, Visible: false);
 
             try {
                 CopyTextOnly(sourceDocument.Range(), targetRange);
@@ -120,7 +120,7 @@ namespace OpenXmlForVsto.Word {
         }
 
         static Document CreateTargetDocument(Range sourceRange) =>
-            sourceRange.Application.Documents.Add();
+            sourceRange.Application.Documents.Add(Visible: false);
 
         static string GetOrCreateTmpDirectory() {
             string tmpDirPath = Path.Combine(Path.GetTempPath(), "OpenXmlForVsto");
