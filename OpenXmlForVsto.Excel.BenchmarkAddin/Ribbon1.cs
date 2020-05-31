@@ -4,6 +4,7 @@ using Microsoft.Office.Tools.Ribbon;
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Application = Microsoft.Office.Interop.Excel.Application;
@@ -148,6 +149,8 @@ namespace OpenXmlForVsto.Excel.BenchmarkAddin {
             oxh.CopyFromFile(file, range);
             _app.ScreenUpdating = true;
 
+            File.Delete(file);
+
             sw.Stop();
             MessageBox.Show(sw.Elapsed.ToString(), $"OpenXML: write {size * size}");
         }
@@ -185,6 +188,8 @@ namespace OpenXmlForVsto.Excel.BenchmarkAddin {
             _app.ScreenUpdating = false;
             oxh.CopyFromFile(file, range);
             _app.ScreenUpdating = true;
+
+            File.Delete(file);
 
             sw.Stop();
             MessageBox.Show(sw.Elapsed.ToString(), $"OpenXML: read {size * size}");
