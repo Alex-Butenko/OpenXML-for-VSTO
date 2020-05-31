@@ -9,7 +9,7 @@ namespace OpenXmlForVsto.Excel {
         /// Copy a range to a separate .xlsx file,
         /// to a sheet with same name as source sheet,
         /// to the same position as source range.
-        /// It works exactly same as manual copy from one excel file to a new file
+        /// It works exactly same as manual copy from one Excel file to a new file
         /// then saving and closing new file.
         /// Note: remove this temporary .xlsx file after using,
         /// because processes have limitation on amount of created temporary files.
@@ -30,7 +30,7 @@ namespace OpenXmlForVsto.Excel {
         /// Copy a range to a separate .xlsx file,
         /// to a sheet with same name as source sheet,
         /// to the same position as source range.
-        /// It works exactly same as manual copy special from one excel file to a new file
+        /// It works exactly same as manual copy special from one Excel file to a new file
         /// then saving and closing new file.
         /// Note: remove this temporary .xlsx file after using,
         /// because processes have limitation on amount of created temporary files.
@@ -50,7 +50,7 @@ namespace OpenXmlForVsto.Excel {
 
         /// <summary>
         /// Copy a range from matching position in a provided file to the current worksheet.
-        /// It works exactly same as manual open of provided excel file,
+        /// It works exactly same as manual open of provided Excel file,
         /// copy same position range from it to the current worksheet
         /// closing provided file.
         /// </summary>
@@ -71,7 +71,7 @@ namespace OpenXmlForVsto.Excel {
 
         /// <summary>
         /// Copy a range from matching position in a provided file to the current worksheet.
-        /// It works exactly same as manual open of provided excel file,
+        /// It works exactly same as manual open of provided Excel file,
         /// copy (special) same position range from it to the current worksheet
         /// closing provided file.
         /// </summary>
