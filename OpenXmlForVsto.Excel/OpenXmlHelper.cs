@@ -11,6 +11,8 @@ namespace OpenXmlForVsto.Excel {
         /// to the same position as source range.
         /// It works exactly same as manual copy from one excel file to a new file
         /// then saving and closing new file.
+        /// Note: remove this temporary .xlsx file after using,
+        /// because processes have limitation on amount of created temporary files.
         /// </summary>
         /// <param name="range">Single-area range that will be copied.</param>
         /// <returns>Full path to a new temporary .xlsx file with copied range.</returns>
@@ -30,6 +32,8 @@ namespace OpenXmlForVsto.Excel {
         /// to the same position as source range.
         /// It works exactly same as manual copy special from one excel file to a new file
         /// then saving and closing new file.
+        /// Note: remove this temporary .xlsx file after using,
+        /// because processes have limitation on amount of created temporary files.
         /// </summary>
         /// <param name="range">Single-area range that will be copied.</param>
         /// <param name="pasteType">Mode of special copy. Can choose to copy all, only values, only styles etc.</param>
