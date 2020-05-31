@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.30011.22
+VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenXmlForVsto.Excel", "OpenXmlForVsto.Excel\OpenXmlForVsto.Excel.csproj", "{E9BBC788-EF8C-4810-A6A8-CCCAFF0F7139}"
 EndProject
@@ -9,29 +9,55 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenXmlForVsto.Excel.Tests"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenXmlForVsto.Excel.BenchmarkAddin", "OpenXmlForVsto.Excel.BenchmarkAddin\OpenXmlForVsto.Excel.BenchmarkAddin.csproj", "{65913E09-7985-44D5-892E-937F6A2FB149}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenXmlForVsto.Word", "OpenXmlForVsto.Word\OpenXmlForVsto.Word.csproj", "{46A48485-C802-4910-BBFE-78111066A475}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenXmlForVsto.Word.Tests", "OpenXmlForVsto.Word.Tests\OpenXmlForVsto.Word.Tests.csproj", "{237B7E18-ECFC-4B58-9D5C-30860D6E450B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		PerformanceTest|Any CPU = PerformanceTest|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{E9BBC788-EF8C-4810-A6A8-CCCAFF0F7139}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E9BBC788-EF8C-4810-A6A8-CCCAFF0F7139}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9BBC788-EF8C-4810-A6A8-CCCAFF0F7139}.PerformanceTest|Any CPU.ActiveCfg = Release|Any CPU
+		{E9BBC788-EF8C-4810-A6A8-CCCAFF0F7139}.PerformanceTest|Any CPU.Build.0 = Release|Any CPU
 		{E9BBC788-EF8C-4810-A6A8-CCCAFF0F7139}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9BBC788-EF8C-4810-A6A8-CCCAFF0F7139}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8EDF4429-251A-416D-BB68-93F227191BCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8EDF4429-251A-416D-BB68-93F227191BCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EDF4429-251A-416D-BB68-93F227191BCF}.PerformanceTest|Any CPU.ActiveCfg = Release|Any CPU
+		{8EDF4429-251A-416D-BB68-93F227191BCF}.PerformanceTest|Any CPU.Build.0 = Release|Any CPU
 		{8EDF4429-251A-416D-BB68-93F227191BCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EDF4429-251A-416D-BB68-93F227191BCF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{65913E09-7985-44D5-892E-937F6A2FB149}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{65913E09-7985-44D5-892E-937F6A2FB149}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65913E09-7985-44D5-892E-937F6A2FB149}.PerformanceTest|Any CPU.ActiveCfg = Release|Any CPU
+		{65913E09-7985-44D5-892E-937F6A2FB149}.PerformanceTest|Any CPU.Build.0 = Release|Any CPU
 		{65913E09-7985-44D5-892E-937F6A2FB149}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65913E09-7985-44D5-892E-937F6A2FB149}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46A48485-C802-4910-BBFE-78111066A475}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46A48485-C802-4910-BBFE-78111066A475}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46A48485-C802-4910-BBFE-78111066A475}.PerformanceTest|Any CPU.ActiveCfg = Release|Any CPU
+		{46A48485-C802-4910-BBFE-78111066A475}.PerformanceTest|Any CPU.Build.0 = Release|Any CPU
+		{46A48485-C802-4910-BBFE-78111066A475}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46A48485-C802-4910-BBFE-78111066A475}.Release|Any CPU.Build.0 = Release|Any CPU
+		{237B7E18-ECFC-4B58-9D5C-30860D6E450B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{237B7E18-ECFC-4B58-9D5C-30860D6E450B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{237B7E18-ECFC-4B58-9D5C-30860D6E450B}.PerformanceTest|Any CPU.ActiveCfg = Release|Any CPU
+		{237B7E18-ECFC-4B58-9D5C-30860D6E450B}.PerformanceTest|Any CPU.Build.0 = Release|Any CPU
+		{237B7E18-ECFC-4B58-9D5C-30860D6E450B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{237B7E18-ECFC-4B58-9D5C-30860D6E450B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {B75B3A0B-AA79-4D0E-AF7D-6CE56963B559}
+		SolutionGuid = {0D86AB62-9CBE-47FE-A213-4DCF354A6C87}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Xceed.Words.NET.vsmdi
 	EndGlobalSection
 EndGlobal
