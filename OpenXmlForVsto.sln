@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenXmlForVsto.Word", "Open
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenXmlForVsto.Word.Tests", "OpenXmlForVsto.Word.Tests\OpenXmlForVsto.Word.Tests.csproj", "{237B7E18-ECFC-4B58-9D5C-30860D6E450B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenXmlForVsto.Word.BenchmarkAddin", "OpenXmlForVsto.Word.BenchmarkAddin\OpenXmlForVsto.Word.BenchmarkAddin.csproj", "{F00199D8-6B8A-4514-BF4C-56CB406C4156}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,12 @@ Global
 		{237B7E18-ECFC-4B58-9D5C-30860D6E450B}.PerformanceTest|Any CPU.Build.0 = Release|Any CPU
 		{237B7E18-ECFC-4B58-9D5C-30860D6E450B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{237B7E18-ECFC-4B58-9D5C-30860D6E450B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F00199D8-6B8A-4514-BF4C-56CB406C4156}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F00199D8-6B8A-4514-BF4C-56CB406C4156}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F00199D8-6B8A-4514-BF4C-56CB406C4156}.PerformanceTest|Any CPU.ActiveCfg = Release|Any CPU
+		{F00199D8-6B8A-4514-BF4C-56CB406C4156}.PerformanceTest|Any CPU.Build.0 = Release|Any CPU
+		{F00199D8-6B8A-4514-BF4C-56CB406C4156}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F00199D8-6B8A-4514-BF4C-56CB406C4156}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
