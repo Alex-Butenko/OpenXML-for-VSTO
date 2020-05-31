@@ -5,6 +5,16 @@ using System.Runtime.InteropServices;
 
 namespace OpenXmlForVsto.Word {
     public class OpenXmlHelper {
+        /// <summary>
+        /// Copy a range to a separate .docx file.
+        /// It works exactly same as manual copy from one Word file to a new file,
+        /// then saving and closing new file,
+        /// except it removes trailing empty paragraph that Word adds when coping ranges with new line at the end.
+        /// Note: remove this temporary .docx file after using,
+        /// because processes have limitation on amount of created temporary files.
+        /// </summary>
+        /// <param name="sourceRange">Single-area range that will be copied.</param>
+        /// <returns>Full path to a new temporary .docx file with copied range.</returns>
         public string CopyToFile(Range sourceRange) {
             if (sourceRange == null) throw new ArgumentNullException(nameof(sourceRange));
 
@@ -20,6 +30,15 @@ namespace OpenXmlForVsto.Word {
             }
         }
 
+        /// <summary>
+        /// Copy a range to a separate .docx file.
+        /// It works exactly same as manual copy text only from a Word file to a new file,
+        /// then saving and closing new file,
+        /// Note: remove this temporary .docx file after using,
+        /// because processes have limitation on amount of created temporary files.
+        /// </summary>
+        /// <param name="sourceRange">Single-area range that will be copied.</param>
+        /// <returns>Full path to a new temporary .docx file with copied range.</returns>
         public string CopyToFileTextOnly(Range sourceRange) {
             if (sourceRange == null) throw new ArgumentNullException(nameof(sourceRange));
 
@@ -35,6 +54,14 @@ namespace OpenXmlForVsto.Word {
             }
         }
 
+        /// <summary>
+        /// Copy whole document range from a provided file to the range.
+        /// It works exactly same as manual open of provided Word file,
+        /// copy whole content from it to another document and closing provided file,
+        /// except it removes trailing empty paragraph that Word adds when coping ranges with new line at the end.
+        /// </summary>
+        /// <param name="file">Full path to .docx file.</param>
+        /// <param name="targetRange">Single-area range to copy to.</param>
         public void CopyFromFile(string file, Range targetRange) {
             if (file == null) throw new ArgumentNullException(nameof(file));
             if (!File.Exists(file)) throw new FileNotFoundException("File does not exist", file);
@@ -51,6 +78,13 @@ namespace OpenXmlForVsto.Word {
             }
         }
 
+        /// <summary>
+        /// Copy whole document text from a provided file to the range.
+        /// It works exactly same as manual open of provided Word file,
+        /// copy whole text from it to another document and closing provided file,
+        /// </summary>
+        /// <param name="file">Full path to .docx file.</param>
+        /// <param name="targetRange">Single-area range to copy to.</param>
         public void CopyFromFileTextOnly(string file, Range targetRange) {
             if (file == null) throw new ArgumentNullException(nameof(file));
             if (!File.Exists(file)) throw new FileNotFoundException("File does not exist", file);
