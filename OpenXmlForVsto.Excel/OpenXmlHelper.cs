@@ -64,6 +64,8 @@ namespace OpenXmlForVsto.Excel {
             if (targetRange == null) throw new ArgumentNullException(nameof(targetRange));
 
             Workbook sourceWorkbook = targetRange.Application.Workbooks.Open(sourceFile);
+            sourceWorkbook.Windows[1].Visible = false;
+
             Range sourceRange = sourceWorkbook.Worksheets[sheetName ?? (object)1].Range[targetRange.Address];
             Copy(sourceRange, targetRange);
             sourceWorkbook.Close();
@@ -86,6 +88,8 @@ namespace OpenXmlForVsto.Excel {
             if (targetRange == null) throw new ArgumentNullException(nameof(targetRange));
 
             Workbook sourceWorkbook = targetRange.Application.Workbooks.Open(sourceFile);
+            sourceWorkbook.Windows[1].Visible = false;
+
             Range sourceRange = sourceWorkbook.Worksheets[sheetName ?? (object)1].Range[targetRange.Address];
 
             CopySpecial(sourceRange, targetRange, pasteType);
@@ -106,6 +110,7 @@ namespace OpenXmlForVsto.Excel {
         static Tuple<Workbook, Worksheet> SetupWorkbookAndSheet(Range sourceRange) {
             Application app = sourceRange.Application;
             Workbook workbook = app.Workbooks.Add();
+            workbook.Windows[1].Visible = false;
             Worksheet sheet = workbook.Worksheets[1];
             sheet.Name = sourceRange.Worksheet.Name;
             return new Tuple<Workbook, Worksheet>(workbook, sheet);
