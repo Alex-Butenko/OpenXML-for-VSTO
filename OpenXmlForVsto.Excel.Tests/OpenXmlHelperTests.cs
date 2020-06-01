@@ -14,8 +14,7 @@ namespace OpenXmlForVsto.Excel.Tests {
     public partial class OpenXmlHelperTests {
         [SetUp]
         public void Setup() {
-            _application = new Application();
-            _application.DisplayAlerts = false;
+            _application = new Application { DisplayAlerts = false };
         }
 
         [TearDown]
