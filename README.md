@@ -29,7 +29,7 @@ Writing operations:
 |                 | Pure VSTO  | Using OpenXML-for-VSTO |
 |-----------------|------------|------------------------|
 | 1 cell          |00:00:00.254|    00:00:00.938        |
-| 100 cell        |00:00:00.302|    00:00:01.225        |
+| 100 cells       |00:00:00.302|    00:00:01.225        |
 | 10000 cells     |00:00:09.709|    00:00:01.967        |
 | 1,000,000 cells |00:18:31.897|    00:01:28.600        |
 
@@ -38,11 +38,35 @@ Reading operations:
 |                 | Pure VSTO  | Using OpenXML-for-VSTO |
 |-----------------|------------|------------------------|
 | 1 cell          |00:00:00.009|    00:00:00.754        |
-| 100 cell        |00:00:00.045|    00:00:00.740        |
+| 100 cells       |00:00:00.045|    00:00:00.740        |
 | 10000 cells     |00:00:03.287|    00:00:01.476        |
 | 1,000,000 cells |00:05:45.179|    00:00:47.838        |
 
 Even though performance for Excel can be improved in some scenarios by using union ranges, ClosedXML algorithms are less than optimal in this scenario as well, and most likely in real scenario performance gain can be much bigger.
+
+### Word
+Benchmark is based on writing and reading runs of text - 1, 100, 10,000, 100,000 or 1,000,000 two different ways - using this library  and with pure Word interop. Each individual run text, background color, font color, font size, italic and bold status. No optimizations.
+
+Writing operations:
+
+|                 | Pure VSTO  | Using OpenXML-for-VSTO |
+|-----------------|------------|------------------------|
+| 1 run           |00:00:00.027|     00:00:00.828       |
+| 100 runs        |00:00:00.623|     00:00:00.583       |
+| 10,000 runs     |00:02:10.232|     00:00:01.360       |
+| 100,000 runs    |00:51:37.007|     00:00:09.061       |
+| 1,000,000 runs  |            |     b00:01:36.512      |
+
+Reading operations:
+
+|                 | Pure VSTO  | Using OpenXML-for-VSTO |
+|-----------------|------------|------------------------|
+| 1 run           |00:00:00.013|     00:00:00.519       |
+| 100 runs        |00:00:00.150|     00:00:00.186       |
+| 10,000 runs     |00:00:16.284|     00:00:01.377       |
+| 100,000 runs    |00:03:02.905|     00:00:08.515       |
+| 1,000,000 runs  |            |     00:01:23.920       |
+
 
 ## How it works
 * Copy an object to a file using Clipboard.
