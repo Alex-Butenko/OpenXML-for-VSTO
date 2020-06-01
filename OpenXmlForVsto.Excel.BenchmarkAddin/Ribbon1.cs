@@ -185,10 +185,6 @@ namespace OpenXmlForVsto.Excel.BenchmarkAddin {
                 }
             });
 
-            _app.ScreenUpdating = false;
-            oxh.CopyFromFile(file, range);
-            _app.ScreenUpdating = true;
-
             File.Delete(file);
 
             sw.Stop();
