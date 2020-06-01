@@ -85,3 +85,14 @@ System.AppDomain.CurrentDomain
     .GetField("_SecurityIdentity", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)?
     .SetValue(System.AppDomain.CurrentDomain, newEvidence);
 ```
+
+## Tips and tricks
+You can save a copy of the whole workbook without using this library by using Workbook.SaveCopyAs method.
+This does not work with Word documents, but then you can cast Document to [IPersistFile](https://docs.microsoft.com/en-us/windows/win32/api/objidl/nn-objidl-ipersistfile?redirectedfrom=MSDN) and use method Save
+
+```c#
+using System.Runtime.InteropServices.ComTypes;
+
+IPersistFile persistFile = (IPersistFile) doc;
+persistFile.Save(<path>, false);
+```
