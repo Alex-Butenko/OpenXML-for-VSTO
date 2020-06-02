@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>OpenXmlForVsto.Excel</id>
+    <version>1.0.0.1</version>
+    <title>OpenXML-for-VSTO provides the ability to process content as OpenXML from VSTO addins</title>
+    <authors>Alex Butenko</authors>
+    <owners>Alex Butenko</owners>
+    <licenseUrl>https://github.com/Alex-Butenko/OpenXML-for-VSTO/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Alex-Butenko/OpenXML-for-VSTO</projectUrl>
+    <!--
+    <iconUrl></iconUrl>
+-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>OpenXML-for-VSTO provides the ability to process content as OpenXML from VSTO addins</description>
+    <releaseNotes>Initial release. Provides core features</releaseNotes>
+    <copyright>Copyright © Alex Butenko 2020</copyright>
+    <tags>vsto openxml openxml-excel excel excel-addin excel-automation interop</tags>
+    <dependencies>
+    </dependencies>
+  </metadata>
+</package>

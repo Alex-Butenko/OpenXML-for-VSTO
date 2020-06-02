@@ -7,8 +7,8 @@
     <ProjectGuid>{237B7E18-ECFC-4B58-9D5C-30860D6E450B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OpenXmlForVsto.Excel.Tests</RootNamespace>
-    <AssemblyName>OpenXmlForVsto.Excel.Tests</AssemblyName>
+    <RootNamespace>OpenXmlForVsto.Word.Tests</RootNamespace>
+    <AssemblyName>OpenXmlForVsto.Word.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
