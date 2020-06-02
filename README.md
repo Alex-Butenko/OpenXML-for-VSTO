@@ -6,16 +6,24 @@ OpenXML-for-VSTO provides the ability to process content as OpenXML from VSTO-ad
 * [Issues](#Issues)
 * [Where to use](#Where-to-se)
 * [Where not to use](#Where-not-to-use)
+* [Benchmark](#Benchmark)
+* [Issues](#Issues)
+* [Tips and tricks](#Tips-and-tricks)
 
 ## Introduction
 One of the problems of creating VSTO add-ins for MS Office is the performance of access to a large number of elements. Access is through the boundaries of the AppDomains, with a lot of Reflection. Each call can read/write only one parameter at a time, therefore, for large tables/documents, the add-in have to make millions of such calls. Moreover, these calls are performed in the UI thread, blocking or slowing down user input and worsening the user experience.
 Using OpenXML would be a good solution, but unfortunately, the Office API does not provide easy access to OpenXML.
 This library provides the ability to get/set an OpenXML object directly from/to VSTO add-in.
 
-## Where to use
+## How it works
+* Copy an object to a file using Clipboard.
+* Work with the file as with any other OpenXML file.
+* Copy the object back.
+
+## When to use
 In VSTO add-ins, in operations with thousands of objects, involving styles and formats.
 
-## Where not to use
+## When not to use
 * Office Interop except for VSTO add-ins. In this case the library does not give any advantage, as you can replace interop with any OpenXML library all at once.
 * Operations with small sets of objects - each copy paste has significant overhead that does not worth it for small sets.
 * Operations with values/formulas in Excel - these can be much faster accessed throuch 2d arrays.
@@ -67,11 +75,6 @@ Reading operations:
 | 100,000 runs    |00:03:02.905|     00:00:08.515       |
 | 1,000,000 runs  |            |     00:01:23.920       |
 
-
-## How it works
-* Copy an object to a file using Clipboard.
-* Work with the file as with any other OpenXML file.
-* Copy the object back.
 
 ## Issues
 * It uses the clipboard, so after each operation it looses data user potentiall saved there. There are workaronds, like save and restore clipboard for each operation, but these are not part of this library
