@@ -3,7 +3,6 @@ OpenXML-for-VSTO provides the ability to process content as OpenXML from VSTO-ad
 
 * [Introduction](#introduction)
 * [How it works?](#How-it-works)
-* [Issues](#Issues)
 * [Where to use](#Where-to-se)
 * [Where not to use](#Where-not-to-use)
 * [Benchmark](#Benchmark)
